@@ -6,13 +6,11 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
-from agents import set_tracing_export_api_key
 from content_generators.content_generator import content_generators
 from content_generators.context import Content, WorkflowResponse
 
 # Load environment variables
 load_dotenv()
-set_tracing_export_api_key(os.getenv("OPENAI_API_KEY"))
 
 # Define the expected request payload
 class WorkflowRequest(BaseModel):

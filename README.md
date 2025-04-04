@@ -15,28 +15,20 @@
 ai-social-media-manager/
 ├── README.md                  # Project overview and setup instructions
 ├── requirements.txt           # Python dependencies
-├── setup.py                   # (Optional) Packaging script
+├── setup.py                   # Packaging script
 ├── .env                       # Environment variables (API keys, secrets, etc.)
 ├── config/
 │   └── config.yaml            # Configuration settings (social media API endpoints, scheduling preferences)
-├── agents/
+├── content_generators/
 │   ├── __init__.py
-│   ├── content_generator.py   # Agent for generating creative content
-│   ├── scheduling_agent.py    # Agent for scheduling posts via social media APIs
-│   ├── optimization_agent.py  # Agent for analyzing performance and suggesting improvements
-│   └── coordinator_agent.py   # Agent to orchestrate handoffs among other agents
-├── tools/
-│   ├── __init__.py
-│   ├── web_search_tool.py     # Tool for fetching trending topics and real-time data
-│   └── image_generation_tool.py  # Tool for generating images (e.g., via DALL-E)
+│   ├── linkedin_content_generator.py  # Generates LinkedIn content
+│   ├── instagram_content_generator.py # Generates Instagram content
+│   ├── blog_content_generator.py      # Generates blog content
 ├── scripts/
-│   └── run_agent.py           # Entry point to launch the agent workflow
-├── tests/
+│   ├── run_generators.py      # Script to run content generation tasks
+├── api/
 │   ├── __init__.py
-│   ├── test_agents.py         # Unit tests for agent logic and handoff coordination
-│   └── test_tools.py          # Unit tests for tool integrations
-└── docs/
-    └── architecture.md        # Detailed documentation on system architecture and workflow
+│   └── api.py                 # FastAPI application for exposing endpoints
 ```
 
 ## Installation
@@ -46,16 +38,19 @@ ai-social-media-manager/
    git clone https://github.com/yourusername/ai-social-media-manager.git
    cd ai-social-media-manager
    ```
+
 2. **Create and activate a virtual environment:**
    ```bash
    python -m venv env
    source env/bin/activate        # On Unix/MacOS
    env\Scripts\activate           # On Windows
    ```
+
 3. **Install dependencies:**
    ```bash
    pip install -r requirements.txt
    ```
+
 4. **Configure Environment Variables:**
    Create a `.env` file in the root directory and add:
    ```env
@@ -65,11 +60,25 @@ ai-social-media-manager/
 
 ## Usage
 
+### Run the Workflow
 Run the complete agent workflow with:
 ```bash
 python scripts/run_agent.py
 ```
 This script initializes the various agents (content generation, scheduling, and optimization), coordinates their interaction, and executes the workflow to generate, schedule, and optimize a social media post.
+
+### Run Content Generators
+To generate content for specific platforms, use:
+```bash
+python scripts/run_generators.py
+```
+
+### API Endpoints
+Start the FastAPI server:
+```bash
+uvicorn api.api:app --host 0.0.0.0 --port 8000
+```
+Access the API documentation at `http://localhost:8000/docs`.
 
 ## Configuration
 
@@ -85,6 +94,29 @@ Run unit tests to ensure proper functionality:
 pytest tests/
 ```
 
+## Deployment
+
+### Render.com
+To deploy the application on Render, use the following start command:
+```bash
+uvicorn api.api:app --host 0.0.0.0 --port 8000
+```
+
+### Docker
+If you want to containerize the application, create a `Dockerfile` and build the image:
+```dockerfile
+FROM python:3.10-slim
+WORKDIR /app
+COPY . .
+RUN pip install -r requirements.txt
+CMD ["uvicorn", "api.api:app", "--host", "0.0.0.0", "--port", "8000"]
+```
+Build and run the Docker container:
+```bash
+docker build -t ai-social-media-manager .
+docker run -p 8000:8000 ai-social-media-manager
+```
+
 ## Contributing
 
 Contributions are welcome! Please fork the repository, create your feature branch, and submit a pull request. Refer to [CONTRIBUTING.md](CONTRIBUTING.md) for details on our contribution process.
@@ -95,9 +127,8 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 
-For any questions or support, please contact [your-email@example.com](mailto:your-email@example.com).
+For any questions or support, please contact [ckobieyisi@gmail.com](mailto:ckobieyisi@gmail.com).
 
 ---
 
 **AI Social Media Manager** leverages cutting-edge AI technology to revolutionize how content is managed on social media—making it more creative, efficient, and effective.
-```

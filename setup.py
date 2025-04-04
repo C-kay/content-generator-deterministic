@@ -20,10 +20,13 @@ setuptools.setup(
     ],
     python_requires='>=3.8',
     install_requires=[
-        "openai-agents==0.0.5",
         "openai>=0.27.0",
         "PyYAML>=6.0",
         "python-dotenv>=1.0.0",
+        "fastapi>=0.95.0",
+        "uvicorn>=0.22.0",
+        "pydantic>=1.10.0",
+        "httpx>=0.24.0",
     ],
     entry_points={
         "console_scripts": [
