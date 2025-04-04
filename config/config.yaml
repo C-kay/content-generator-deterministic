@@ -1,0 +1,43 @@
+# config/config.yaml
+
+# Social media platform configuration
+social_media:
+  instagram:
+    api_endpoint: "https://graph.facebook.com/v11.0/me/media"
+    access_token: "${SOCIAL_MEDIA_API_KEY}"
+  twitter:
+    api_endpoint: "https://api.twitter.com/2/tweets"
+    bearer_token: "${SOCIAL_MEDIA_API_KEY}"
+  facebook:
+    api_endpoint: "https://graph.facebook.com/v11.0/me/feed"
+    access_token: "${SOCIAL_MEDIA_API_KEY}"
+  linkedin:
+    api_endpoint: "https://api.linkedin.com/v2/shares"
+    access_token: "${SOCIAL_MEDIA_API_KEY}"
+
+# Scheduling preferences for posting content
+scheduling:
+  default_timezone: "America/New_York"
+  optimal_posting_hours:
+    - 9    # 9 AM
+    - 12   # 12 PM
+    - 18   # 6 PM
+  retry_interval_minutes: 15  # Interval to retry scheduling in case of failures
+
+# Agent configuration settings
+agent_settings:
+  content_generator:
+    model: "gpt-4o"
+    temperature: 0.7
+    top_p: 0.9
+  scheduling_agent:
+    model: "gpt-4o-mini"
+    temperature: 0.5
+  optimization_agent:
+    model: "gpt-4o-mini"
+    temperature: 0.6
+
+# Logging and tracing configurations
+logging:
+  level: "INFO"
+  trace_enabled: true
