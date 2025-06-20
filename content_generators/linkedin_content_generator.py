@@ -1,5 +1,6 @@
 import os
 import sys
+import asyncio
 from openai import AsyncOpenAI
 from dotenv import load_dotenv
 # Add the parent directory to the system path for module imports
@@ -32,7 +33,8 @@ async def generate_linkedin_content(draft: str) -> str:
 # Example usage for testing:
 if __name__ == "__main__":
     draft = "the benefits of remote work"
-    response = generate_linkedin_content(draft)
+    result = asyncio.run(generate_linkedin_content(draft))
+    print(result)
     
     
 
