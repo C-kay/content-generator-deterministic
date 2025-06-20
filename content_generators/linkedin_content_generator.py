@@ -1,10 +1,12 @@
 import os
 import sys
+# Third-party
 from openai import AsyncOpenAI
 from dotenv import load_dotenv
 # Add the parent directory to the system path for module imports
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from prompts.linkedin_content_prompts import linkedin_system_prompt, linkedin_prompt
+from memory.pinecone_memory import store_memory
 
 # Load environment variables from .env file
 load_dotenv()
@@ -26,6 +28,7 @@ async def generate_linkedin_content(draft: str) -> str:
         max_output_tokens=2000,
         store=True
     )
+    await store_memory(response.output_text, namespace="linkedin", metadata={"draft": draft})
     return response.output_text
 
 
