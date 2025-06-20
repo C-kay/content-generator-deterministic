@@ -8,6 +8,7 @@
 - **Optimization:** Analyze engagement data and adjust strategies for improved performance.
 - **Agent Orchestration:** Use dedicated agents for content generation, scheduling, and optimization, coordinated through a central handoff agent.
 - **Built-in Tools:** Utilize web search for trending topics and image generation (via DALL-E integration) to enhance posts.
+- **Long-Term Memory:** Generated content is stored in a Pinecone vector database for later retrieval and analysis.
 
 ## Project Structure
 
@@ -56,6 +57,9 @@ ai-social-media-manager/
    ```env
    OPENAI_API_KEY=your_openai_api_key
    SOCIAL_MEDIA_API_KEY=your_social_media_api_key
+   PINECONE_API_KEY=your_pinecone_api_key
+   PINECONE_ENVIRONMENT=your_pinecone_environment
+   PINECONE_INDEX_NAME=ai-content-memory
    ```
 
 ## Usage
