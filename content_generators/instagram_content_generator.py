@@ -28,7 +28,6 @@ async def generate_instagram_content(draft: str) -> str:
         max_output_tokens=1024,
         store=True
     )
-    await store_memory(response.output_text, namespace="instagram", metadata={"draft": draft})
     return response.output_text
 
 

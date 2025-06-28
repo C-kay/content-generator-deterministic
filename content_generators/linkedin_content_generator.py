@@ -28,7 +28,6 @@ async def generate_linkedin_content(draft: str) -> str:
         max_output_tokens=2000,
         store=True
     )
-    await store_memory(response.output_text, namespace="linkedin", metadata={"draft": draft})
     return response.output_text
 
 

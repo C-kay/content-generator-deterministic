@@ -2,17 +2,16 @@ import os
 import uuid
 from dotenv import load_dotenv
 from openai import AsyncOpenAI
-import pinecone
+from pinecone import Pinecone
 
 load_dotenv()
 
 PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
-PINECONE_ENVIRONMENT = os.getenv("PINECONE_ENVIRONMENT")
 PINECONE_INDEX_NAME = os.getenv("PINECONE_INDEX_NAME", "ai-content-memory")
 
-if PINECONE_API_KEY and PINECONE_ENVIRONMENT:
-    pinecone.init(api_key=PINECONE_API_KEY, environment=PINECONE_ENVIRONMENT)
-    index = pinecone.Index(PINECONE_INDEX_NAME)
+if PINECONE_API_KEY:
+    pc = Pinecone(api_key=PINECONE_API_KEY)
+    index = pc.Index(PINECONE_INDEX_NAME)
 else:
     index = None
 
@@ -29,4 +28,5 @@ async def store_memory(text: str, namespace: str = "default", metadata: dict | N
     vector = response.data[0].embedding
     meta = metadata or {}
     meta.update({"text": text})
-    index.upsert(vectors=[(str(uuid.uuid4()), vector, meta)], namespace=namespace)
+    upsert_response = await index.upsert(vectors=[(str(uuid.uuid4()), vector, meta)], namespace=namespace)
+    return upsert_response.upserted_count > 0

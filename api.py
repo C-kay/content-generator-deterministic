@@ -7,7 +7,8 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
 from content_generators.content_generator import content_generators
-from content_generators.context import Content, WorkflowResponse
+from content_generators.context import WorkflowResponse
+from memory.pinecone_memory import store_memory
 
 # Load environment variables
 load_dotenv()
@@ -16,6 +17,12 @@ load_dotenv()
 class WorkflowRequest(BaseModel):
     topic_draft: str
     platforms: list[str]
+
+#
+class SaveContentRequest(BaseModel):
+    text: str
+    namespace: str = "default"
+    metadata: dict | None = None
 
 # Initialize FastAPI app
 app = FastAPI()
@@ -94,6 +101,17 @@ async def execute_single_platform(request: WorkflowRequest):
         raise HTTPException(status_code=500, detail=f"Error processing platform task: {str(e)}")
 
     return response_content
+
+@app.post("/save_liked_content")
+async def save_liked_content(request: SaveContentRequest):
+    try:
+        isSaved = await store_memory(request.text, namespace=request.namespace, metadata=request.metadata)
+        if isSaved:
+            return {"status": "success", "message": "Content saved to memory."}
+        else:
+            return {"status": "error", "message": "Failed to save content to memory."}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error saving content: {str(e)}")
 
     
 if __name__ == "__main__":

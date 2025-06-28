@@ -6,7 +6,6 @@ from dotenv import load_dotenv
 # Add the parent directory to the system path for module imports
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from prompts.blog_content_prompts import tech_blog_prompt, tech_blog_system_prompt
-from memory.pinecone_memory import store_memory
 
 # Load environment variables from .env file
 load_dotenv()
@@ -28,7 +27,6 @@ async def generate_blog_content(draft: str) -> str:
         max_output_tokens=4000,
         store=True
     )
-    await store_memory(response.output_text, namespace="blog", metadata={"draft": draft})
     return response.output_text
 
 
