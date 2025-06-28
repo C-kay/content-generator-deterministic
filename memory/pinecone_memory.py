@@ -28,5 +28,5 @@ async def store_memory(text: str, namespace: str = "default", metadata: dict | N
     vector = response.data[0].embedding
     meta = metadata or {}
     meta.update({"text": text})
-    upsert_response = await index.upsert(vectors=[(str(uuid.uuid4()), vector, meta)], namespace=namespace)
+    upsert_response = index.upsert(vectors=[(str(uuid.uuid4()), vector, meta)], namespace=namespace)
     return upsert_response.upserted_count > 0
