@@ -27,6 +27,18 @@ class SaveContentRequest(BaseModel):
 # Initialize FastAPI app
 app = FastAPI()
 
+# Add CORS middleware
+app.add_middleware( 
+    CORSMiddleware,
+    allow_origins=[ # Allow requests from this origin
+        "http://localhost:5173",
+        "https://content-creator-ui.onrender.com"
+    ],  
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all HTTP methods
+    allow_headers=["*"],  # Allow all headers
+)
+
 # Define available platforms
 AVAILABLE_PLATFORMS = {
     "LinkedIn": {"id": 1, "name": "LinkedIn"},
@@ -37,14 +49,6 @@ AVAILABLE_PLATFORMS = {
     "Blog Post": {"id": 6, "name": "Blog Post"},
 }
 
-# Add CORS middleware
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://localhost:5173", "https://content-creator-ui.onrender.com"],  # Allow requests from this origin
-    allow_credentials=True,
-    allow_methods=["*"],  # Allow all HTTP methods
-    allow_headers=["*"],  # Allow all headers
-)
 
 def create_task(platform: str, topic_draft: str):
     if platform not in content_generators:
