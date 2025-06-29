@@ -27,6 +27,7 @@ setuptools.setup(
         "uvicorn>=0.22.0",
         "pydantic>=1.10.0",
         "httpx>=0.24.0",
+        "pinecone>=3.0.0",
     ],
     entry_points={
         "console_scripts": [
