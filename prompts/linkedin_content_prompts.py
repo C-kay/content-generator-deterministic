@@ -36,26 +36,29 @@ linkedin_prompt = """
     Hashtags and Mentions:
     Recommend including 3-5 relevant hashtags and tagging relevant individuals or organizations to increase reach and engagement.
 
-    Example post:
+    """
+
+linkedin_prompt_post_example = """
     Am I Still a Developer or Just an AI Whisperer?
 
-    "Vibe Coding" is taking off, and I had to see what the hype was about. What started as a casual experiment with AI for side projects has evolved into a full-blown shift in how I code. At first, I worried—was I becoming just an AI-dependent button pusher? But instead of making me rusty, Vibe Coding has sharpened my skills (though my typing speed has taken a hit—small price to pay 😅).
+    I started using AI to Vibe Code as an experiment. Now it's how I build.
+    At first, I feared I was becoming a button pusher. But Vibe Coding didn't dull my skills—it sharpened them.
+    (Though my typing speed took a hit 😅)
 
-    At its core, software engineering has never been about typing speed or memorizing syntax—it’s about solving problems. Vibe Coding eliminates the grunt work, allowing me to focus on business outcomes, architecture, design, and security—the aspects that truly define great software. Once you shift your mindset, the programming language becomes just another tool.
+    Great engineering isn't about speed—it's about solving problems.
+    AI now handles the grunt work, freeing me to focus on architecture, business goals, and secure design.
 
-    Here is how Successfully Vibe Code Without Losing Your Developer Card:
+    How to Vibe Code Without Losing Your Dev Card:
 
-    1. Experience First – AI is great, but you still need to understand project structure, design patterns, security, and architecture. Without that foundation, you're just prompting and hoping for the best.
+    1️⃣ Experience First - AI helps, but architecture wins.
+    2️⃣ Pick your stack - I use Cursor + GitHub Copilot.
+    3️⃣ Prompt with intent - Fuzzy prompts = fuzzy code.
+    4️⃣ Use the right model - Match model to task.
+    5️⃣ Set a system prompt - Keep code clean and consistent.
 
-    2. Pick Your AI & Editor – My setup? Cursor or VS Code + GitHub Copilot—but find what works best for your flow.
+    I code less—but build better.
 
-    3. Master Prompting – AI is only as effective as your instructions. Poor prompts lead to messy, inefficient code.
+    👉 Which AI tool has made you a sharper engineer? Share below!
 
-    3.Use the Right Model – Different AI models excel in different areas—know which ones work best for coding, debugging, and documentation.
-
-    4. Define a Solid System Prompt – AI tends to refactor unnecessarily. A well-crafted system prompt ensures clean, consistent code, reducing unwanted changes and maintaining structure.
-
-    Sure, I type less, but I spend more time architecting and less time debugging. Vibe Coding isn’t producing insecure, half-baked code—it’s making good engineers more efficient and focused on high-impact work.
-
-    hashtag#VibeCoding hashtag#AIProgramming hashtag#SoftwareDevelopment hashtag#PromptEngineering hashtag#AI
+    #VibeCoding #AIProgramming #SoftwareEngineering #PromptEngineering
     """
