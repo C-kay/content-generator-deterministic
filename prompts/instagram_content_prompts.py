@@ -33,19 +33,19 @@ Suggest a simple visual style, background music, camera movement, or transitions
 
 📈 Hashtags:
 Suggest 3–5 relevant hashtags based on the topic to boost visibility.
+"""
 
-Example post:
-**Caption:**
-You ever open your fridge just to stare into the abyss and hope something magically appears? 😂  
-That’s me. Every. Night.  
-But here’s what I started doing that saved me $$ and kept me from eating cereal for dinner again:
+instagram_prompt_post_example = """
+    Opened the fridge. Nothing there. Again. 😂
+    Here's how I stopped eating cereal for dinner (and saved $$ too) 👇
 
-🥦 Meal prep Sundays (but make it vibey with a playlist)
-📋 Grocery list BEFORE stepping into Trader Joe’s
-🍳 Batch cook easy things like stir-fry, pasta sauce, or grilled chicken
+    🥦 Meal Prep Sundays (vibes required)
+    🛒 List before Trader Joe's
+    🍳 Batch cook stir-fry, pasta sauce, grilled chicken
 
-Trust me, your future self (and wallet) will thank you.  
-How do *you* survive the “nothing in the fridge” moment? 👀👇
+    Save this for next week 🔖
 
-#FoodHack #Adulting101 #MealPrepHacks #InstagramLife #RelatableContent
+    What's your go-to “fridge is empty” move? Drop it below 👇
+
+    #MealPrepHacks #Adulting101 #CerealAgain #TraderJoesRun #BudgetEats #FridgeHack #CookingTips #RelatableReels #FoodHacks #LazyDinners #BatchCookIdeas #SundayPrep #WeeklyMeals #BudgetMealPrep #YoungAdultLife #VibeCooking #QuickMeals #GroceryListLife #KitchenRoutine #HomeChefTips #InstagramFood #RelatableContent
 """
